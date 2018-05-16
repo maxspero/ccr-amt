@@ -1,0 +1,9 @@
+{
+  "title": "Complete a robot simulation task using an iPhone app",
+  "description": "You must use an iPhone app we have provided to grasp and stack blocks in a simulated environment.",
+  "keywords": "grasp,robot,train,iphone,app",
+  "reward": 0.95,
+  "duration": 3600,
+  "frame_height": 20000,
+  "max_assignments": 5
+}
