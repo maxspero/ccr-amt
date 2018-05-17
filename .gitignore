@@ -5,5 +5,5 @@ config.json
 hit_templates_rendered/*
 rendered_templates/*
 config*.json
-ccr.html
 output/*
+ccr_rendered.html
