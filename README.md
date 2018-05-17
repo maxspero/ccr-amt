@@ -1,19 +1,26 @@
-simple-amt
+ccr-amt
 ==========
-simple-amt is a microframework for working with [Amazon's Mechanical Turk](http://www.mturk.com) (AMT). It was designed with the following three principles in mind:
+ccr-amt is a repo forked from [simple-amt](https://github.com/maxspero/ccr-amt). It is used to create Amazon Mechanical Turk tasks for CCR.
 
-- Abstract away the details of AMT to let you focus on your own task.
-- Place no restrictions on the structure of your AMT tasks.
-- Lightweight and easy to understand.
+# Usage
+```
+./commands/launch.sh
+```
+```
+./commands/check_progress.sh
+```
+```
+./commands/get_results.sh
+```
 
-# Quick start guide
-Follow these steps to set up simple-amt and run a simple HIT on AMT.
+
+# Simple-AMT quick start guide
 
 ### Check out the codebase and set up a virtualenv
 ```
-git clone https://github.com/jcjohnson/simple-amt.git
-cd simple-amt
-virtualenv .env
+git clone https://github.com/maxspero/ccr-amt.git
+cd ccr-amt
+virtualenv -p python2 .env
 source .env/bin/activate
 pip install -r requirements.txt
 ```
