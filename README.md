@@ -12,7 +12,9 @@ ccr-amt is a repo forked from [simple-amt](https://github.com/maxspero/ccr-amt).
 ```
 ./commands/get_results.sh
 ```
-
+```
+./commands/reset.sh
+```
 
 # Simple-AMT quick start guide
 
