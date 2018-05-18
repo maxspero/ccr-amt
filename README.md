@@ -7,16 +7,24 @@ ccr-amt is a repo forked from [simple-amt](https://github.com/maxspero/ccr-amt).
 ./commands/launch.sh
 ```
 ```
-./commands/check_progress.sh
+./commands/check_progress.sh # Optional
 ```
 ```
-./commands/get_results.sh
+./commands/get_results.sh # Optional
 ```
 ```
-./commands/reset.sh
+./commands/approve.sh # Make sure to do this before resetting
+```
+```
+./commands/reset.sh # Make sure to run this instead of just deleting hit_ids.txt
 ```
 
 # Simple-AMT quick start guide
+
+### Setup
+```
+sudo apt-get install python-dev libmysqlclient-dev
+```
 
 ### Check out the codebase and set up a virtualenv
 ```
@@ -25,6 +33,7 @@ cd ccr-amt
 virtualenv -p python2 .env
 source .env/bin/activate
 pip install -r requirements.txt
+mkdir output
 ```
 
 ### Configure your Amazon account

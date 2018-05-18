@@ -2,3 +2,5 @@ Jinja2==2.7.3
 MarkupSafe==0.23
 boto==2.42.0
 wsgiref==0.1.2
+google_compute_engine
+mysqlclient

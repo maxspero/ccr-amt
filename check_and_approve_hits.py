@@ -1,5 +1,6 @@
 import argparse, json
 import simpleamt
+import MySQLdb
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(parents=[simpleamt.get_parent_parser()])
@@ -16,6 +17,8 @@ if __name__ == '__main__':
   with open(args.hit_ids_file, 'r') as f:
     hit_ids = [line.strip() for line in f]
 
+  conn = MySQLdb.connect(host='localhost', user='root', passwd='password', db='ccr_db')
+  cursor = conn.cursor()
   for hit_id in hit_ids:
     try:
       assignments = mtc.get_assignments(hit_id)
@@ -29,15 +32,20 @@ if __name__ == '__main__':
           output = json.loads(a.answers[0][0].fields[0])
           # Check if HIT assignment properly completed!
           print("output = ", output)
-          # get from db??
-          # row = select successful, paid from ccr.hashes where hash = output.hash
-          if len(row) == 0:
+          cursor.execute('SELECT successful, paid FROM hashes WHERE hash=%s;', (output['hash'],))
+          row = cursor.fetchone();
+          if row is None:
             reject_ids.append(a.AssignmentId)
-          elif row.paid or not row.successful:
+            print('none reject')
+            continue
+          successful, paid = row 
+          if paid == 1 or successful == 0:
             reject_ids.append(a.AssignmentId)
+            print('other reject, paid=', paid, 'successful=', successful)
           else:
-            # set paid=True in ccr.hashes where hash = output.hash
+            cursor.execute('UPDATE hashes SET paid = 1 WHERE hash=%s;', (output['hash'],))
             approve_ids.append(a.AssignmentId)
+            print('accept')
         except ValueError as e:
           reject_ids.append(a.AssignmentId)
       else:
